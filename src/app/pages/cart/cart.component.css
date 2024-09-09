@@ -5,3 +5,9 @@
   padding: 40px;
   align-items: center;
 }
+main {
+  width: 70%;
+  min-height: 30vh;
+  height: auto;
+  margin: 100px auto;
+}

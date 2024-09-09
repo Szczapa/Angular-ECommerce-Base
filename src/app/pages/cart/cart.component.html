@@ -1,3 +1,4 @@
+<main>
 <div class="grid">
   @for (p of cartItems; track p){
     <app-product-card (deleteEvent)="removeFromCart($event)" view="cart" [product]="p" [productType]="p"></app-product-card>
@@ -5,3 +6,4 @@
     <p>Il n'y a pas de produits</p>
   }
 </div>
+</main>

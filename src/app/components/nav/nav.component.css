@@ -1,7 +1,19 @@
 nav {
-
+  height: 150px;
   padding: 10px 20px;
+  position: relative;
+}
 
+nav:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0%, 100% 68%, 0 84%);
+  z-index: -1;
+  background-color: #362B3D;
 }
 
 nav ul {
@@ -17,10 +29,10 @@ nav ul li {
 }
 
 nav ul li a {
-  color: black;
+  color: white;
   text-decoration: none;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1.05rem;
+  font-weight: 600;
   transition: color 0.3s ease, border-bottom 0.3s ease;
   position: relative;
   padding: 5px 0;
@@ -60,4 +72,5 @@ nav ul li a:hover::before {
     font-size: 20px;
   }
 }
+
 

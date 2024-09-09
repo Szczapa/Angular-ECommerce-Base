@@ -15,6 +15,8 @@ body {
 
 main {
   width: 80%;
+  min-height: 30vh;
+  height: auto;
   margin: auto;
 }
 
@@ -32,13 +34,12 @@ h3 {
   color: var(--primary);
 }
 
-button {
-  border: none;
-  background: var(--primary);
-  color: white;
-  padding: 10px 15px;
-  border-radius: 5px;
-  font-size: 1.1em;
+
+
+@media (min-width: 768px) {
+  .button {
+    padding: 13px 50px 13px;
+  }
 }
 
 button.secondary {
