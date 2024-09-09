@@ -5,6 +5,12 @@ body {
   padding: 0;
 }
 
+main {
+  width: 70%;
+  /*height: 100vh;*/
+  margin: 100px auto;
+}
+
 h1, h2{
   text-align: center;
   margin: 20px 0;
@@ -111,5 +117,6 @@ button[type="button"]:hover {
     padding: 8px 15px;
   }
 }
+
 
 
