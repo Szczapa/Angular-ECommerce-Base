@@ -1,1 +1,77 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --dark: #344055;
+  --primary: #bd8925;
+  --main-font: 'Montserrat', sans-serif;
+  --title-font: 'League Spartan', sans-serif;
+}
+
+body {
+  margin: 0;
+  color: var(--dark);
+  font-family: var(--main-font);
+}
+
+main {
+  width: 80%;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+h1, h2 {
+  font-family: var(--title-font);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+h3 {
+  color: var(--primary);
+}
+
+button {
+  border: none;
+  background: var(--primary);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+
+button.secondary {
+  border: solid 1px var(--primary);
+  background: white;
+  color: var(--primary);
+}
+
+.btn-container {
+  display: flex;
+  gap: 20px;
+}
+
+form {
+  width: 80%;
+  max-width: 500px;
+}
+
+form p {
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  margin: 80px auto;
+}
+
+.error {
+  color: red;
+}
+
+footer {
+  text-align: center;
+  border-top: solid 1px var(--dark);
+  padding-top: 20px;
+}

@@ -1,0 +1,49 @@
+<section>
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Nom</label>
+      <input id="name" formControlName="name" >
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" ></textarea>
+    </div>
+
+    <div>
+      <label for="price">Prix</label>
+      <input id="price" formControlName="price" type="number" >
+    </div>
+
+    <div>
+      <label for="image">Url Image</label>
+      <input id="image" formControlName="image" >
+    </div>
+    <button type="submit">Sauvegarder</button>
+  </form>
+</section>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Url</th>
+    <th>Descritpion</th>
+    <th>Prix</th>
+    <th>Action</th>
+    th.
+  </tr>
+  </thead>
+  <tbody>
+
+    @for (p of products; track p) {
+      <tr>
+        <td>{{p.name}}</td>
+        <td>{{p.imageUrl}}</td>
+        <td>{{p.description}}</td>
+        <td>{{p.price}}</td>
+        <td><button (click)="deleteToClicked()" type="button">Delete</button></td>
+      </tr>
+    }
+  </tbody>
+</table>
+

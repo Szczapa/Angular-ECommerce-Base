@@ -1,0 +1,10 @@
+  <button (click)="sortProductsByPrice()">Trier par prix</button>
+<div class="grid">
+  @for(p of products; track p){
+    <app-product-card view="global" (addToCart)="addProductToCard($event)" [product]="p"></app-product-card>
+  } @empty {
+    <p>Il n'y a pas de produits</p>
+  }
+</div>
+
+
