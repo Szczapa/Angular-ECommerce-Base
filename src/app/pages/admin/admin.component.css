@@ -55,12 +55,28 @@ button {
   font-size: 16px;
   margin-top: 20px;
   transition: background-color 0.3s ease;
+
 }
 
-button a {
+.button  {
+  display: flex;
+  justify-content: center;
+ gap: 10px;
+}
+.button a {
   text-decoration: none;
   color: white;
 }
+
+
+button.delete-button {
+  background-color: #650505 !important;
+}
+
+button.edit-button {
+  background-color: var(--primary) !important;
+}
+
 
 .grid {
   display: grid;

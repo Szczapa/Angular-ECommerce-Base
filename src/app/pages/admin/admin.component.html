@@ -55,8 +55,10 @@
           <td>{{ p.price }}</td>
           <td>{{ p.stock }}</td>
           <td>
-            <button (click)="deleteToClicked(i)" type="button">Delete</button>
-            <button type="button"><a routerLink="/admin/update/{{p.name}}">Edit</a></button>
+            <div class="button">
+              <button (click)="deleteToClicked(i)" type="button" class="delete-button">Delete</button>
+              <button type="button" class="edit-button"><a routerLink="/admin/update/{{p.name}}">Edit</a></button>
+            </div>
           </td>
         </tr>
       }
