@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, Observable, of, tap} from "rxjs";
+import {BehaviorSubject, catchError, Observable, of, tap} from "rxjs";
 import {User} from "../utils/user.type";
 import {environment} from "../../environments/environment";
 
@@ -10,6 +10,7 @@ import {environment} from "../../environments/environment";
 export class AuthService {
 
   apiUrl = environment.apiUrl;
+    private loggedIn = new BehaviorSubject<boolean>(this.getToken() !== null);
 
   constructor(private http: HttpClient) { }
 
@@ -24,21 +25,30 @@ export class AuthService {
     )
   }
 
-  login(cred: Pick<User, 'email' | 'password'>): Observable<{accessToken: string}> {
-    console.log(cred)
-    return this.http.post<{accessToken: string}>(this.apiUrl + '/login', cred).pipe(
-      tap(res => localStorage.setItem('token', res.accessToken)),
-      catchError(error => {
-        console.log(error, "ça morche po")
-        return of()
-      })
+    login(cred: Pick<User, 'email' | 'password'>): Observable<{accessToken: string}> {
+        return this.http.post<{accessToken: string}>(this.apiUrl + '/login', cred).pipe(
+            tap(res => {
+                localStorage.setItem('token', res.accessToken);
+                this.loggedIn.next(true);
+            }),
+            catchError(error => {
+                console.log(error, "ça morche po")
+                return of()
+            })
+        )
+    }
 
-    )
-  }
+    disconnect() {
+        localStorage.removeItem('token');
+        this.loggedIn.next(false);
+    }
 
   getToken(): string | null {
     return localStorage.getItem('token')
   }
 
+    get isLoggedIn(): Observable<boolean> {
+        return this.loggedIn.asObservable();
+    }
 
 }

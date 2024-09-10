@@ -1,5 +1,6 @@
 <h1>Connexion</h1>
 
+<main>
 <form [formGroup]="form" (ngSubmit)="handleSubmit()">
   <p>
     <label>Email</label>
@@ -7,9 +8,11 @@
   </p>
   <p>
     <label>Mot de passe</label>
-    <input formControlName="password">
+    <input type="password" formControlName="password">
   </p>
   <p>
     <button>Connexion</button>
   </p>
+  <a routerLink="/register">Créer compte</a>
 </form>
+</main>
