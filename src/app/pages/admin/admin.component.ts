@@ -3,6 +3,7 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {ProductService} from "../../services/product.service";
 import {ProductType} from "../../utils/productType";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-admin',
@@ -21,13 +22,14 @@ export class AdminComponent implements OnInit {
     name: new FormControl('',[Validators.required]),
     description: new FormControl(''),
     price: new FormControl(0,[Validators.required, Validators.min(0.1)]),
-    imageUrl: new FormControl('',[Validators.required])
+    imageUrl: new FormControl('',[Validators.required]),
+    stock: new FormControl(0, [Validators.required, Validators.min(0)])
   });
 
   products: ProductType[] = [];
   errorMessages: string[] = [];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private cartService: CartService) { }
 
   onSubmit(){
     if (this.productForm.invalid) {
@@ -41,6 +43,9 @@ export class AdminComponent implements OnInit {
       if (this.productForm.controls.imageUrl.errors) {
         this.errorMessages.push('Image URL is required');
       }
+      if (this.productForm.controls.stock.errors) {
+        this.errorMessages.push('Stock must be greater than 0');
+      }
       console.log(this.errorMessages);
       return;
     }
@@ -51,6 +56,8 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(){
     this.products = this.productService.getProducts();
+
+
   }
 
   // TODO : Patch delete bug (just delete in view, not in the model)

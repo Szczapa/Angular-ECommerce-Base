@@ -22,12 +22,12 @@ export class ProductCardComponent{
 
 
   addToCartClicked() {
-    const cartItem: CartItemType = { ...this.product, quantity: 1 };
+    const cartItem: CartItemType = { ...this.product, quantity: 1, stock: 1 };
     this.addToCart.emit(cartItem);
   }
 
   deleteToCartClicked() {
-    const cartItem: CartItemType = { ...this.product, quantity: 1 };
+    const cartItem: CartItemType = { ...this.product, quantity: 1, stock: 1 };
     this.deleteEvent.emit(cartItem);
   }
 }

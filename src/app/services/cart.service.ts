@@ -7,13 +7,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CartService {
   private cart: CartItemType[] = [];
-  private cartSubject = new BehaviorSubject<CartItemType[]>(this.cart); // Utilisation de BehaviorSubject pour garder la dernière valeur
+  private cartSubject = new BehaviorSubject<CartItemType[]>(this.cart);
 
   constructor() {
     const CartStored = localStorage.getItem('cart');
     if (CartStored) {
       this.cart = JSON.parse(CartStored);
-      this.cartSubject.next(this.cart); // Mise à jour du BehaviorSubject avec les données du localStorage
+      this.cartSubject.next(this.cart);
     }
   }
 
@@ -30,22 +30,24 @@ export class CartService {
     const existingProduct = this.cart.find(p => p.name === product.name);
     if (existingProduct) {
       existingProduct.quantity += product.quantity;
+      existingProduct.stock -= product.stock;
     } else {
       this.cart.push(product);
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.cartSubject.next(this.cart); // Mise à jour du BehaviorSubject pour notifier les abonnés
+    this.cartSubject.next(this.cart);
   }
 
   deleteFromCart(product: CartItemType): void {
     const index = this.cart.findIndex(p => p.name === product.name);
     if (index !== -1) {
       this.cart[index].quantity -= product.quantity;
+      this.cart[index].stock += product.stock;
       if (this.cart[index].quantity <= 0) {
         this.cart.splice(index, 1);
       }
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
-    this.cartSubject.next(this.cart); // Mise à jour du BehaviorSubject pour notifier les abonnés
+    this.cartSubject.next(this.cart);
   }
 }

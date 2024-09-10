@@ -10,19 +10,22 @@ export class ProductService {
       name: 'Product 1',
       price: 100,
       description: 'Description for product 1',
-      imageUrl: 'https://via.placeholder.com/150'
+      imageUrl: 'https://via.placeholder.com/150',
+      stock: 0,
     },
     {
       name: 'Product 2',
       price: 200,
       description: 'Description for product 2',
-      imageUrl: 'https://via.placeholder.com/150'
+      imageUrl: 'https://via.placeholder.com/150',
+      stock: 10,
     },
     {
       name: 'Product 3',
       price: 300,
       description: 'Description for product 3',
-      imageUrl: 'https://via.placeholder.com/150'
+      imageUrl: 'https://via.placeholder.com/150',
+      stock: 5,
     }
  ];
 

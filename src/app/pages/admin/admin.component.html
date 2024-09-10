@@ -26,6 +26,10 @@
       <label for="imageUrl">Url Image</label>
       <input id="imageUrl" formControlName="imageUrl" >
     </div>
+    <div>
+      <label for="stock">Stock</label>
+      <input id="stock" formControlName="stock" type="number" >
+    </div>
     <button type="submit">Sauvegarder</button>
   </form>
 </section>
@@ -37,6 +41,7 @@
     <th>Url</th>
     <th>Descritpion</th>
     <th>Prix</th>
+    <th>stock</th>
     <th>Action</th>
   </tr>
   </thead>
@@ -48,6 +53,7 @@
         <td>{{p.imageUrl}}</td>
         <td>{{p.description}}</td>
         <td>{{p.price}}</td>
+        <td>{{p.stock}}</td>
         <td><button (click)="deleteToClicked(i)" type="button">Delete</button></td>
       </tr>
     }
