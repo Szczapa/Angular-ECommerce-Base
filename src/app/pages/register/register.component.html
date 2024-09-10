@@ -1,0 +1,23 @@
+<h1>Inscription</h1>
+
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <p>
+    <label>Prénom</label>
+    <input formControlName="firstname">
+  </p>
+  <p>
+    <label>Nom</label>
+    <input formControlName="lastname">
+  </p>
+  <p>
+    <label>Email</label>
+    <input formControlName="email">
+  </p>
+  <p>
+    <label>Mot de passe</label>
+    <input formControlName="password">
+  </p>
+  <p>
+    <button>S'inscrire</button>
+  </p>
+</form>
