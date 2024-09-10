@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "email": "jeanmich@mail.fr",
+      "password": "mdp",
+      "firstname": "Jean Michel",
+      "lastname": "La Tourte",
+      "id": 1
+    },
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$mXFFFdbvDgqJF2NeGBENUuKeDHPE6YoLmEBDGGrvt.3CeFauI1HYS",
+      "firstname": "test",
+      "lastname": "test",
+      "id": 2
+    }
+  ]
+}
