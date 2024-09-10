@@ -12,10 +12,16 @@ footer .container {
   margin: auto;
 }
 
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
 .footer-links {
   display: flex;
   justify-content: center;
-  width: 90%;
   list-style: none;
   color: white;
 }

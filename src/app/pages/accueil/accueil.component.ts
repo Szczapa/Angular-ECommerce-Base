@@ -5,13 +5,15 @@ import {ProductService} from "../../services/product.service";
 import {ProductType} from "../../utils/productType";
 import {CartService} from "../../services/cart.service";
 import {CartItemType} from "../../utils/cartType";
+import {OrderPricePipe} from "../../utils/pipe/order-price.pipe";
 
 @Component({
   selector: 'app-accueil',
   standalone: true,
   imports: [
     NavComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    OrderPricePipe
   ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
@@ -27,8 +29,12 @@ export class AccueilComponent {
     this.cartService.addToCart(product)
   }
 
-  sortProductsByPrice() {
-    this.products.sort((a, b) => a.price - b.price);
+ selectedOrder: 'asc' | 'desc' = 'asc';
+
+  sortProductsByPrice(event: Event) {
+    const selectElement = event.target as HTMLSelectElement
+    this.selectedOrder = selectElement.value as 'asc' | 'desc'
+
   }
 
 }
