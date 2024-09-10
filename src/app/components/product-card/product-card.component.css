@@ -3,6 +3,7 @@
   box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.56);
   padding: 20px;
 }
+
 .rounded {
   margin-right: 10px;
   background: var(--dark);
@@ -10,6 +11,7 @@
   padding: 5px 10px;
   border-radius: 50px;
 }
+
 h3 {
   margin: auto;
   width: fit-content;
@@ -18,6 +20,7 @@ h3 {
   font-size: 2em;
   text-transform: uppercase;
 }
+
 h3:after {
   content: '';
   position: absolute;
@@ -29,10 +32,10 @@ h3:after {
   height: .5em;
   background-color: var(--primary);
   z-index: -1;
-  clip-path: polygon(0 100%,80% 100% , 100% 0, 20% 0);
+  clip-path: polygon(0 100%, 80% 100%, 100% 0, 20% 0);
 }
 
-.imageContainer{
+.imageContainer {
   display: flex;
   justify-content: center;
   margin-top: .5rem;
@@ -71,8 +74,19 @@ button:hover:after {
   left: 0px;
 }
 
-.btn-card{
+.btn-card, .btn-card-add {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+  color: #ccc;
+  border: 1px solid #ccc;
+}
+
+button:disabled:after {
+  background-color: #ccc;
 }

@@ -1,17 +1,17 @@
 <main>
-<div class="orderbutton">
-  <select (change)="sortProductsByPrice($event)">
-    <option value="asc">Trier par prix croissant</option>
-    <option value="desc">Trier par prix décroissant</option>
-  </select>
-  <input type="text" [(ngModel)]="search" placeholder="Rechercher un produit"/>
-</div>
-<div class="grid">
-  @for(p of products | orderPrice: selectedOrder: search ; track p){
-    <app-product-card view="global" (addToCart)="addProductToCard($event)" [product]="p"></app-product-card>
-  } @empty {
-    <p>Il n'y a pas de produits</p>
-  }
-</div>
+  <div class="orderbutton">
+    <select (change)="sortProductsByPrice($event)">
+      <option value="asc">Trier par prix croissant</option>
+      <option value="desc">Trier par prix décroissant</option>
+    </select>
+    <input type="text" [(ngModel)]="search" placeholder="Rechercher un produit"/>
+  </div>
+  <div class="grid">
+    @for (p of products | orderPrice: selectedOrder: search; track p) {
+      <app-product-card view="global" (addToCart)="addProductToCard($event)" [product]="p"></app-product-card>
+    } @empty {
+      <p>Il n'y a pas de produits</p>
+    }
+  </div>
 </main>
 

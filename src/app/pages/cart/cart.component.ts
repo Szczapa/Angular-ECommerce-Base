@@ -13,7 +13,7 @@ import {CartItemType} from "../../utils/cartType";
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
-export class CartComponent  implements OnInit {
+export class CartComponent implements OnInit {
   cartItems: CartItemType[] = [];
 
   ngOnInit() {

@@ -1,14 +1,14 @@
 body {
   font-family: 'Roboto', sans-serif;
-  color:var(--dark);
+  color: var(--dark);
   margin: 0;
   padding: 0;
 }
 
-h1, h2{
+h1, h2 {
   text-align: center;
   margin: 20px 0;
-  color:var(--dark);
+  color: var(--dark);
 }
 
 

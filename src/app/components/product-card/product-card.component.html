@@ -1,15 +1,19 @@
 <div class="card">
-  <h3>{{product.name}}</h3>
+  <h3>{{ product.name }}</h3>
   <div class="imageContainer">
     <img [ngSrc]="'https://via.placeholder.com/150'" alt="Product Image" width="150" height="150" priority>
   </div>
   <p>{{ product.description }}</p>
-  <p>{{product.price}} €</p>
-  @if(view == 'cart'){
-    <p>Quantité: {{productType.quantity}}</p>
-    <p class="btn-card"><button role="button" (click)="deleteToCartClicked()">Supprimer du panier</button></p>
+  <p>{{ product.price }} €</p>
+  @if (view == 'cart') {
+    <p>Quantité: {{ productType.quantity }}</p>
+    <p class="btn-card">
+      <button role="button" (click)="deleteToCartClicked()">Supprimer du panier</button>
+    </p>
   } @else {
-    <p class="btn-card"><button role="button" (click)="addToCartClicked()">Ajouter au panier</button></p>
+    <p class="btn-card-add">
+      <button role="button" (click)="addToCartClicked()" [disabled]="product.stock === 0">Ajouter au panier</button>
+    </p>
   }
 
 </div>

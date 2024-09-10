@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NavComponent} from "../../components/nav/nav.component";
 import {ProductCardComponent} from "../../components/product-card/product-card.component";
 import {ProductService} from "../../services/product.service";
@@ -24,14 +24,14 @@ export class AccueilComponent {
   products: ProductType[];
 
   constructor(productService: ProductService, private cartService: CartService) {
-   this.products = productService.getProducts()
+    this.products = productService.getProducts()
   }
 
   addProductToCard(product: CartItemType) {
     this.cartService.addToCart(product)
   }
 
- selectedOrder: 'asc' | 'desc' = 'asc';
+  selectedOrder: 'asc' | 'desc' = 'asc';
   search: string = ''
 
   sortProductsByPrice(event: Event) {

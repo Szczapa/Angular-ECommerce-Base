@@ -1,9 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {ProductService} from "../../services/product.service";
-import {ProductType} from "../../utils/productType";
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
-import {CartService} from "../../services/cart.service";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {ProductService} from '../../services/product.service';
+import {ProductType} from '../../utils/productType';
+import {StockService} from '../../services/stock.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-admin',
@@ -15,23 +15,24 @@ import {CartService} from "../../services/cart.service";
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit {
-
   @Output() deleteProduct = new EventEmitter<ProductType>();
 
   productForm = new FormGroup({
-    name: new FormControl('',[Validators.required]),
+    name: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    price: new FormControl(0,[Validators.required, Validators.min(0.1)]),
-    imageUrl: new FormControl('',[Validators.required]),
+    price: new FormControl(0, [Validators.required, Validators.min(0.1)]),
+    imageUrl: new FormControl('', [Validators.required]),
     stock: new FormControl(0, [Validators.required, Validators.min(0)])
   });
 
   products: ProductType[] = [];
   errorMessages: string[] = [];
+  private stockSubscription?: Subscription;
 
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(private productService: ProductService, private stockService: StockService) {
+  }
 
-  onSubmit(){
+  onSubmit() {
     if (this.productForm.invalid) {
       this.errorMessages = [];
       if (this.productForm.controls.name.errors) {
@@ -54,19 +55,23 @@ export class AdminComponent implements OnInit {
     this.productForm.reset();
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.products = this.productService.getProducts();
-
-
+    this.stockSubscription = this.stockService.getStockObservable().subscribe(stock => {
+      this.products = stock;
+    });
   }
 
-  // TODO : Patch delete bug (just delete in view, not in the model)
-deleteToClicked(index: number) {
-  const product = this.products[index];
-  if (product) {
-    this.products.splice(index, 1);
-    this.productService.deleteProduct(index);
+  ngOnDestroy() {
+    if (this.stockSubscription) {
+      this.stockSubscription.unsubscribe();
+    }
+  }
+
+  deleteToClicked(index: number) {
+    const product = this.products[index];
+    if (product) {
+      this.productService.deleteProduct(index);
+    }
   }
 }
-}
-

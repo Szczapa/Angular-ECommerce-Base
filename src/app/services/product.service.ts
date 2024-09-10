@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {ProductType} from "../utils/productType";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
- products: ProductType[] = [
+  products: ProductType[] = [
     {
       name: 'Product 1',
       price: 100,
@@ -27,7 +27,7 @@ export class ProductService {
       imageUrl: 'https://via.placeholder.com/150',
       stock: 5,
     }
- ];
+  ];
 
   constructor() {
     const ProductStored = localStorage.getItem('products');
