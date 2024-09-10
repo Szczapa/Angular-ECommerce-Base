@@ -1,33 +1,12 @@
 import {Injectable} from '@angular/core';
 import {ProductType} from "../utils/productType";
+import {CartService} from "./cart.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  products: ProductType[] = [
-    {
-      name: 'Product 1',
-      price: 100,
-      description: 'Description for product 1',
-      imageUrl: 'https://via.placeholder.com/150',
-      stock: 0,
-    },
-    {
-      name: 'Product 2',
-      price: 200,
-      description: 'Description for product 2',
-      imageUrl: 'https://via.placeholder.com/150',
-      stock: 10,
-    },
-    {
-      name: 'Product 3',
-      price: 300,
-      description: 'Description for product 3',
-      imageUrl: 'https://via.placeholder.com/150',
-      stock: 5,
-    }
-  ];
+  products: ProductType[] = [];
 
   constructor() {
     const ProductStored = localStorage.getItem('products');
@@ -48,5 +27,13 @@ export class ProductService {
   deleteProduct(index: number): void {
     this.products.splice(index, 1);
     localStorage.setItem('products', JSON.stringify(this.products));
+  }
+
+  updateProduct(originalName: string, updatedProduct: ProductType): void {
+    const index = this.products.findIndex(p => p.name === originalName);
+    if (index !== -1) {
+      this.products[index] = updatedProduct;
+      localStorage.setItem('products', JSON.stringify(this.products));
+    }
   }
 }

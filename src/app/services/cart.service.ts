@@ -57,6 +57,8 @@ export class CartService {
     const products = this.productService.getProducts();
     const existingProduct = products.find(p => p.name === product.name);
 
+    console.log("existingProduct:",existingProduct);
+    console.log("existingProduct quantity:",product);
     if (existingProduct) {
       const updatedStock = action === 'decrease'
         ? existingProduct.stock - product.quantity
@@ -70,7 +72,4 @@ export class CartService {
       this.stockService.updateStock(stockProduct);
     }
   }
-
-
-
 }
