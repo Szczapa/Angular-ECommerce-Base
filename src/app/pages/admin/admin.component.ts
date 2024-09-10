@@ -4,12 +4,16 @@ import {ProductService} from '../../services/product.service';
 import {ProductType} from '../../utils/productType';
 import {StockService} from '../../services/stock.service';
 import {Subscription} from 'rxjs';
+import {CartService} from "../../services/cart.service";
+import {RouterLink, RouterOutlet} from "@angular/router";
 
 @Component({
   selector: 'app-admin',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterOutlet,
+    RouterLink
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'
@@ -29,7 +33,7 @@ export class AdminComponent implements OnInit {
   errorMessages: string[] = [];
   private stockSubscription?: Subscription;
 
-  constructor(private productService: ProductService, private stockService: StockService) {
+  constructor(private productService: ProductService, private stockService: StockService, private cartService: CartService) {
   }
 
   onSubmit() {
@@ -68,8 +72,15 @@ export class AdminComponent implements OnInit {
     }
   }
 
+
   deleteToClicked(index: number) {
     const product = this.products[index];
+    const check = this.cartService.getCart().find(p => p.name === product.name) || null;
+    console.log("check",check);
+    if (check) {
+      alert('Product is in cart');
+      this.cartService.deleteFromCart(check);
+    }
     if (product) {
       this.productService.deleteProduct(index);
     }

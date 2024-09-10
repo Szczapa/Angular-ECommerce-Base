@@ -33,35 +33,4 @@
       <button type="submit">Sauvegarder</button>
     </form>
   </section>
-
-  <table>
-    <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Url</th>
-      <th>Descritpion</th>
-      <th>Prix</th>
-      <th>stock</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-
-      @for (p of products; track p; let i = $index) {
-        <tr>
-          <td>{{ p.name }}</td>
-          <td>{{ p.imageUrl }}</td>
-          <td>{{ p.description }}</td>
-          <td>{{ p.price }}</td>
-          <td>{{ p.stock }}</td>
-          <td>
-            <button (click)="deleteToClicked(i)" type="button">Delete</button>
-            <button type="button"><a routerLink="/admin/update/{{p.name}}">Edit</a></button>
-          </td>
-        </tr>
-      }
-    </tbody>
-  </table>
 </main>
-
-<router-outlet></router-outlet>
