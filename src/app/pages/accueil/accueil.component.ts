@@ -6,6 +6,7 @@ import {ProductType} from "../../utils/productType";
 import {CartService} from "../../services/cart.service";
 import {CartItemType} from "../../utils/cartType";
 import {OrderPricePipe} from "../../utils/pipe/order-price.pipe";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-accueil',
@@ -13,7 +14,8 @@ import {OrderPricePipe} from "../../utils/pipe/order-price.pipe";
   imports: [
     NavComponent,
     ProductCardComponent,
-    OrderPricePipe
+    OrderPricePipe,
+    FormsModule
   ],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
@@ -30,6 +32,7 @@ export class AccueilComponent {
   }
 
  selectedOrder: 'asc' | 'desc' = 'asc';
+  search: string = ''
 
   sortProductsByPrice(event: Event) {
     const selectElement = event.target as HTMLSelectElement

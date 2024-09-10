@@ -24,6 +24,14 @@ h1, h2{
   font-size: 16px;
   transition: border-color 0.3s ease;
 }
+.orderbutton {
+  display: flex;
+  gap: 30px;
+
+}
+.orderbutton input {
+  width: 17%;
+}
 
 
 label {

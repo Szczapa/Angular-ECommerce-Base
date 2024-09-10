@@ -7,11 +7,9 @@ import {ProductType} from "../productType";
 })
 export class OrderPricePipe implements PipeTransform {
 
-  transform(value: ProductType[], order: 'asc' | 'desc'): ProductType[] {
-    if (!value){
-      return value;
-    }
-    return [...value].sort((a,b) => {
+  transform(value: ProductType[], order: 'asc' | 'desc', search: string): ProductType[] {
+    const filteredName = value.filter(p => p.name.toLowerCase().includes(search.toLowerCase()))
+    return filteredName.sort((a,b) => {
       if (order === 'asc'){
         return a.price - b.price;
       } else {
