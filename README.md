@@ -49,7 +49,7 @@ To start the "BackEnd" API:
 - [ ]  Secure backend authentication and data exchange
 - [ ]  Visual and animation effects
 
-# ------
+# -------
 
 # Angular-ECommerce-Base
 
@@ -104,7 +104,7 @@ Pour démarrer l'API "BackEnd" :
 
 
 
-# ------
+# -------
 ## Devs Team
 
 - [@szczapa](https://www.github.com/szczapa)
